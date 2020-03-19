@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount, configure } from 'enzyme';
 import Timeline from './Timeline';
-import TimelineItem from '../../components/TimelineItem/TimelineItem'
+import TimelineItem from '../TimelineItem/TimelineItem'
 import { directions } from '../../enums/enums'
 import { render } from '@testing-library/react';
 
@@ -109,8 +109,6 @@ describe('Timeline', () => {
     const { container } = render(<Timeline {...props}>
       {createTimelineItem(itemProps)}
     </Timeline>)
-
-    console.log(container.firstChild.firstChild);
 
     expect(container.firstChild.firstChild instanceof elementType).toEqual(true)
 
