@@ -1,6 +1,5 @@
 import React from 'react';
 import TimelineItem from './TimelineItem';
-import { renderIntoDocument, scryRenderedDOMComponentsWithClass } from 'react-dom/test-utils';
 import { directions } from '../../enums/enums';
 import { render } from '@testing-library/react';
 
