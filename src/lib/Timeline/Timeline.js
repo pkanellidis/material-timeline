@@ -93,7 +93,6 @@ const TimelinePropTypes = {
 	isOneWay: PropTypes.bool,
 	wrapItem: PropTypes.func,
 	isLeft: PropTypes.func,
-
 };
 
 Timeline.propTypes = TimelinePropTypes;
