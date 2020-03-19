@@ -4,8 +4,13 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pk12/material-timeline"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build-examples": "react-scripts build",
