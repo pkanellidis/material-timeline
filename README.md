@@ -16,7 +16,7 @@ and `npm install @material-ui/icons` in order for the Timeline components to wor
 
 To create a Timeline component you can follow this example
 
- `<Timeline
+ `<Timeline </br>
         isLeft={isLeft}
         isOneWay={!isDesktop}
         wrapItem={wrapItem}>
