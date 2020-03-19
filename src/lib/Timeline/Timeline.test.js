@@ -62,11 +62,11 @@ describe('Timeline', () => {
 
     }
 
-    component = shallow(<Timeline {...props}>
+    component = mount(<Timeline {...props}>
       {createTimelineItem(itemProps)}
     </Timeline>)
 
-    expect(component.contains(
+    expect(component.containsMatchingElement(
       createTimelineItem({
         ...props,
         direction: directions.LEFT,
@@ -212,7 +212,7 @@ describe('Timeline', () => {
     expect(container.firstChild.firstChild instanceof elementType).toEqual(true)
 
   })
-
+  
 
   // Render / mount / integration tests begin here
 
