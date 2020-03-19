@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount, configure } from 'enzyme';
 import Timeline from './Timeline';
 import TimelineItem from '../TimelineItem/TimelineItem'
-import { directions } from '../../enums/enums'
+import { directions } from '../enums/enums'
 import { render } from '@testing-library/react';
 
 

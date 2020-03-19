@@ -1,6 +1,6 @@
 import React from 'react';
 import TimelineItem from './TimelineItem';
-import { directions } from '../../enums/enums';
+import { directions } from '../enums/enums';
 import { render } from '@testing-library/react';
 
 

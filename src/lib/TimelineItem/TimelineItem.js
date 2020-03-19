@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Card, Grid, CardMedia, CardContent, Box, Paper, makeStyles, Divider, Collapse, CardActions, IconButton } from '@material-ui/core';
-import {directions} from '../../enums/enums'
+import {directions} from '../enums/enums'
 
 export const useStyles = makeStyles(theme => {
 	return {

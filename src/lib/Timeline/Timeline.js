@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTheme, makeStyles } from '@material-ui/core'
-import { directions } from '../../enums/enums'
+import { makeStyles } from '@material-ui/core'
+import { directions } from '../enums/enums'
 
 const useStyles = makeStyles(theme => {
 	return {
@@ -98,4 +98,4 @@ const TimelinePropTypes = {
 
 Timeline.propTypes = TimelinePropTypes;
 
-export default withTheme(Timeline);
+export default Timeline;
