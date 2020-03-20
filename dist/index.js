@@ -1,3 +1,4 @@
 import Timeline from './Timeline/Timeline';
 import TimelineItem from './TimelineItem/TimelineItem';
-export { Timeline, TimelineItem };
+import { directions } from './enums/enums';
+export { Timeline, TimelineItem, directions };

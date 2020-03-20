@@ -27,7 +27,8 @@ var useStyles = makeStyles(function (theme) {
     }
   };
 });
-var Timeline = React.memo(function (props) {
+
+var Timeline = function Timeline(props) {
   var classes = useStyles(props);
   var processedItems = React.Children.map(props.children, function (item, index) {
     var processedItem;
@@ -69,5 +70,6 @@ var Timeline = React.memo(function (props) {
   return React.createElement("ul", {
     className: classes.Timeline
   }, processedItems);
-});
+};
+
 export default Timeline;
