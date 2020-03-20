@@ -33,7 +33,7 @@ const Timeline = React.memo((props) => {
 	const processedItems = React.Children.map(props.children, (item, index) => {
 		let processedItem;
 		if (!props.isOneWay) {
-			
+
 			let isLeft;
 			if (props.isLeft) {
 				isLeft = props.isLeft(item, index)
@@ -58,7 +58,7 @@ const Timeline = React.memo((props) => {
 
 			let direction;
 			const isInvalidValidValue = !props.side || (props.side &&
-				 (props.side !== directions.LEFT && props.side !== directions.RIGHT))
+				(props.side !== directions.LEFT && props.side !== directions.RIGHT))
 
 			if (isInvalidValidValue) {
 				direction = directions.LEFT
@@ -91,8 +91,17 @@ const Timeline = React.memo((props) => {
 
 const TimelinePropTypes = {
 	isOneWay: PropTypes.bool,
-	wrapItem: PropTypes.func,
-	isLeft: PropTypes.func,
+	wrapItem: PropTypes.func(
+		{
+			"item": PropTypes.element,
+			"index": PropTypes.number
+		}),
+	isLeft: PropTypes.func(
+		{
+			"item": PropTypes.element,
+			"index": PropTypes.number
+		}
+	),
 };
 
 Timeline.propTypes = TimelinePropTypes;
