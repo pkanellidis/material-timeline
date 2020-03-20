@@ -3,7 +3,7 @@
 
 ![Component Demo Gif](demo.gif)
 
-## Instalation
+## Installation
 
 Run `npm install material-timeline`
 
