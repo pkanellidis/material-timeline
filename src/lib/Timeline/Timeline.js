@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => {
 	}
 })
 
-const Timeline = React.memo((props) => {
+const Timeline = (props) => {
 
 	const classes = useStyles(props);
 
@@ -87,21 +87,12 @@ const Timeline = React.memo((props) => {
 		</ul>
 	)
 
-})
+}
 
 const TimelinePropTypes = {
 	isOneWay: PropTypes.bool,
-	wrapItem: PropTypes.func(
-		{
-			"item": PropTypes.element,
-			"index": PropTypes.number
-		}),
-	isLeft: PropTypes.func(
-		{
-			"item": PropTypes.element,
-			"index": PropTypes.number
-		}
-	),
+	wrapItem: (item, index) => {},
+	isLeft: (item, index) => {}
 };
 
 Timeline.propTypes = TimelinePropTypes;
