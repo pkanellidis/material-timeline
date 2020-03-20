@@ -1,6 +1,8 @@
 
 # material-timeline component
 
+![Component Demo Gif](demo.gif)
+
 ## Instalation
 
 Run `npm install material-timeline`
