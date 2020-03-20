@@ -9,9 +9,9 @@ Run `npm install material-timeline`
 
 ## Dependencies
 
-This package uses components created from __material-ui__ so you will need to run
-`npm install @material-ui/core`
-and `npm install @material-ui/icons` in order for the Timeline components to work properly
+This package uses components created from __material-ui__ so it will automatically install
+`@material-ui/core`
+and `@material-ui/icons` in order for the Timeline components to work properly
 
 ## Usage
 
