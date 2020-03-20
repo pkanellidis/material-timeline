@@ -253,7 +253,12 @@ const TimelineItemPropTypes = {
 	iconContent: PropTypes.element,
 	cardHeaderChildren: PropTypes.node,
 	cardContentChildren: PropTypes.node,
-	cardMediaProps: PropTypes.object.isRequired,
+	cardMediaProps: PropTypes.shape(
+		{
+			imgUrl: PropTypes.string,
+			height: PropTypes.string
+		}
+	),
 	expandableCardContent: PropTypes.bool,
 	titleChildren: PropTypes.node,
 	padTop: PropTypes.bool,
