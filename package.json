@@ -4,6 +4,14 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "reactJs",
+    "material",
+    "timeline",
+    "material-timeline",
+    "vertical-timeline"
+  ],
   "files": [
     "dist",
     "README.md"
