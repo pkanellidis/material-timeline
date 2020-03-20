@@ -1,8 +1,9 @@
 {
   "name": "material-timeline",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "license": "MIT",
   "files": [
     "dist",
     "README.md"
