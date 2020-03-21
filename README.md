@@ -1,5 +1,6 @@
 
 # material-timeline component
+A React Timeline component using Material-UI
 
 ![Component Demo Gif](demo.gif)
 
