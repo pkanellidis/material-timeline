@@ -270,7 +270,6 @@ const TimelineItemPropTypes = {
 	padTop: PropTypes.bool,
 	timelineItemWidth: PropTypes.string,
 	hasDivider: PropTypes.bool,
-	isStackedImage: PropTypes.bool,
 	customLine: PropTypes.string
 };
 

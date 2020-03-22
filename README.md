@@ -52,6 +52,9 @@ want to wrap each Item with other components e.g. for animating them.
 You can do that by implementing a function to pass as a parameter to wrap item.
 __NOTE__ the `item` argument is a reactElement, not just data.
 
+- __stackedImages Boolean__
+> Specifies if the TimelineItems should have their image at the Left or at the Top.
+
 
 ### TimelineItem
 
@@ -105,3 +108,7 @@ __NOTE__ if the height is not set then the image won't be visible
 
 - __hasDivider: boolean__
 > If true, adds a divider between the cardHeader and the cardContent
+
+- __customLine: String__
+> This is a css property to set the line's styling (background css property).
+E.g. value `linear-gradient('#fafafa, #fafafa ) no-repeat center/4px 100%`
