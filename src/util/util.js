@@ -71,7 +71,7 @@ export const createTimelineItem = (key, item, index, isDesktop) => {
                         backgroundColor: '#00acc1'
                     }}
                     key={tagKey}
-                    label={(<Typography style={{color: 'white'}} variant='body2'>{item.tags[tagKey].name}</Typography>)} />) :
+                    label={(<Typography style={{ color: 'white' }} variant='body2'>{item.tags[tagKey].name}</Typography>)} />) :
                 null;
         })
     }
@@ -89,7 +89,10 @@ export const createTimelineItem = (key, item, index, isDesktop) => {
 
     const timelineItem = (
         <TimelineItem
-            titleChildren={(<Typography gutterBottom variant={isDesktop ? 'h6' : 'body2'}>{item.title}</Typography>)}
+            titleChildren={(<Typography gutterBottom style={{
+                textAlign: 'center'
+            }} variant={isDesktop ? 'h6' : 'body2'}>{item.title}</Typography>)}
+            
             yearBackgroundColor='#00acc1'
             yearColor='white'
             cardContentChildren={timelineItemContent}

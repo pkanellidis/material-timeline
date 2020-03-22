@@ -26,6 +26,21 @@ const useStyles = makeStyles(theme => {
 	}
 })
 
+const generateNewProps = (props, direction) => {
+	let isStackedImage;
+	if (props.stackedImages !== null) {
+		isStackedImage = {
+			isStackedImage: props.stackedImages
+		}
+	}
+	const newProps = {
+		isOneWay: props.isOneWay,
+		direction: direction,
+		...isStackedImage
+	}
+	return newProps;
+}
+
 const Timeline = (props) => {
 
 	const classes = useStyles(props);
@@ -42,14 +57,14 @@ const Timeline = (props) => {
 				isLeft = index % 2 === 0
 			}
 
+			const newProps = generateNewProps(props, isLeft ? directions.RIGHT : directions.LEFT)
+
 			processedItem = (
 				<li className={isLeft ?
 					[classes.leftDirection, classes.TimelineElement].join(' ') :
 					[classes.rightDirection, classes.TimelineElement].join(' ')}>
 
-					{React.cloneElement(item, {
-						direction: isLeft ? directions.RIGHT : directions.LEFT
-					})}
+					{React.cloneElement(item, newProps)}
 				</li>
 
 			)
@@ -66,14 +81,13 @@ const Timeline = (props) => {
 			else {
 				direction = props.side
 			}
+			
+			const newProps = generateNewProps(props, direction)
 
 			processedItem = (
 				<li className={direction === directions.LEFT ? [classes.leftDirection, classes.TimelineElement].join(' ')
 					: [classes.rightDirection, classes.TimelineElement].join(' ')}>
-					{React.cloneElement(item, {
-						isOneWay: props.isOneWay,
-						direction: direction
-					})}
+					{React.cloneElement(item, newProps)}
 				</li>
 			)
 		}
@@ -92,7 +106,8 @@ const Timeline = (props) => {
 const TimelinePropTypes = {
 	isOneWay: PropTypes.bool,
 	wrapItem: (item, index) => { },
-	isLeft: (item, index) => { }
+	isLeft: (item, index) => { },
+	stackedImages: PropTypes.bool
 };
 
 Timeline.propTypes = TimelinePropTypes;

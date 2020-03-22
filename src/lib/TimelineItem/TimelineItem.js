@@ -171,11 +171,25 @@ const TimelineItem = props => {
 		)
 	}
 
-	let finalItem;
+	const dividerGrid = props.hasDivider ? (
+		<Grid item xs={12} md={12}>
+			<br />
+			<Divider />
+		</Grid>
+	) : null
+
+	let listDotDirection;
 	if (!props.isOneWay) {
+		listDotDirection = props.direction === directions.LEFT ?
+		classes.listDotLeft : classes.listDotRight
+	}
+
+	let finalItem;
+
+	if (props.isStackedImage) {
 		finalItem = (
-			<div className={classes.TimelineItem}>
-				<div className={props.direction === directions.LEFT ? classes.listDotLeft : classes.listDotRight}>
+			<div className={props.isOneWay ? classes.TimelineItemFull : classes.TimelineItem}>
+				<div className={listDotDirection}>
 					<Paper className={classes.timelineYear}>
 						{props.iconContent}
 					</Paper>
@@ -186,18 +200,13 @@ const TimelineItem = props => {
 				<Box className={props.direction === directions.LEFT ? classes.ArrowLeft : classes.ArrowRight}>
 					<Card component='div' className={classes.TimelineCard}>
 						<Grid container justify='space-evenly'>
-							<Grid item xs={3} md={3}>
+							<Grid item xs={12} md={12}>
 								{cardMedia}
 							</Grid>
-							<Grid className={classes.TimelineCardContent} item xs={8} md={8}>
+							<Grid className={classes.TimelineCardContent} item xs={12} md={12}>
 								{cardHeader}
 							</Grid>
-							{props.hasDivider ? (
-								<Grid item xs={12} md={12}>
-									<br />
-									<Divider />
-								</Grid>
-							) : null}
+							{dividerGrid}
 							<Grid item xs={12} md={12}>
 								{cardContent}
 							</Grid>
@@ -208,10 +217,9 @@ const TimelineItem = props => {
 		)
 	}
 	else {
-
 		finalItem = (
-			<div className={classes.TimelineItemFull}>
-				<div>
+			<div className={props.isOneWay ? classes.TimelineItemFull : classes.TimelineItem}>
+				<div className={listDotDirection}>
 					<Paper className={classes.timelineYear}>
 						{props.iconContent}
 					</Paper>
@@ -222,18 +230,13 @@ const TimelineItem = props => {
 				<Box className={props.direction === directions.LEFT ? classes.ArrowLeft : classes.ArrowRight}>
 					<Card component='div' className={classes.TimelineCard}>
 						<Grid container justify='space-evenly'>
-							<Grid item xs={3} md={3}>
+							<Grid item xs={4} md={3}>
 								{cardMedia}
 							</Grid>
-							<Grid className={classes.TimelineCardContent} item xs={8} md={8}>
+							<Grid className={classes.TimelineCardContent} item xs={7} md={8}>
 								{cardHeader}
 							</Grid>
-							{props.hasDivider ? (
-								<Grid item xs={12} md={12}>
-									<br />
-									<Divider />
-								</Grid>
-							) : null}
+							{dividerGrid}
 							<Grid item xs={12} md={12}>
 								{cardContent}
 							</Grid>
@@ -243,6 +246,7 @@ const TimelineItem = props => {
 			</div>
 		)
 	}
+
 	return finalItem;
 };
 
@@ -264,6 +268,7 @@ const TimelineItemPropTypes = {
 	padTop: PropTypes.bool,
 	timelineItemWidth: PropTypes.string,
 	hasDivider: PropTypes.bool,
+	isStackedImage: PropTypes.bool
 };
 
 TimelineItem.propTypes = TimelineItemPropTypes;
