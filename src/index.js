@@ -86,7 +86,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Timeline
-      stackedImages
+        stackedImages={!isDesktop}
         isLeft={isLeft}
         isOneWay={!isDesktop}
         wrapItem={wrapItem}>
