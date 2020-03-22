@@ -67,7 +67,8 @@ export const useStyles = makeStyles(theme => {
 		},
 		timelineYearWrapper: {
 			content: '" "',
-			background: (props) => 'linear-gradient(' + props.yearBackgroundColor + ',' + props.yearBackgroundColor + ' ) no-repeat center/4px 100%',
+			background: (props) => props.customLine ? props.customLine :
+			'linear-gradient(' + props.yearBackgroundColor + ',' + props.yearBackgroundColor + ' ) no-repeat center/4px 100%',
 			height: '100%',
 			display: 'block',
 		},
@@ -269,7 +270,8 @@ const TimelineItemPropTypes = {
 	padTop: PropTypes.bool,
 	timelineItemWidth: PropTypes.string,
 	hasDivider: PropTypes.bool,
-	isStackedImage: PropTypes.bool
+	isStackedImage: PropTypes.bool,
+	customLine: PropTypes.string
 };
 
 TimelineItem.propTypes = TimelineItemPropTypes;
