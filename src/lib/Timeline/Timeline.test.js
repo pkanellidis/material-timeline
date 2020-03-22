@@ -27,7 +27,7 @@ describe('Timeline', () => {
   const createTimelineItem = (props) => {
     return (
       <TimelineItem
-        {...itemProps}
+        {...props}
       />
     )
   }
@@ -52,10 +52,8 @@ describe('Timeline', () => {
 
   });
 
-  // Shallow / unit tests begin here
 
-  //TODO: test if elements are on the correct side based on the isLeft
-  it('Should render on the left side based on isLeft', () => {
+  it('Should render on the left-to-right (Directions.RIGHT) side based on isLeft', () => {
     props = {
       isLeft: isLeft,
       isOneWay: false,
@@ -65,14 +63,18 @@ describe('Timeline', () => {
     component = mount(<Timeline {...props}>
       {createTimelineItem(itemProps)}
     </Timeline>)
+    const item = component.find(TimelineItem)
+    
+    const generatedProps = {
+      isOneWay: item.prop('isOneWay'),
+      direction: item.prop('direction')
+    }
 
-    expect(component.containsMatchingElement(
-      createTimelineItem({
-        ...props,
-        direction: directions.LEFT,
-        isOneWay: props.isOneWay
-      })
-    )).toEqual(true)
+    console.log(generatedProps);
+    
+
+    expect(generatedProps.isOneWay === props.isOneWay
+      && generatedProps.direction === directions.RIGHT).toEqual(true)
   })
 
   it('Should render on the right side based on isLeft', () => {
@@ -205,7 +207,7 @@ describe('Timeline', () => {
 
     }
 
-    const {container} = render(<Timeline {...props}>
+    const { container } = render(<Timeline {...props}>
       {createTimelineItem(itemProps)}
     </Timeline>)
 
@@ -234,15 +236,17 @@ describe('Timeline', () => {
     expect(generatedProps.isStackedImage).toEqual(true)
   })
 
-  it('Should pass False to isStackedImage prop', () => {
+  it('Should keep isStackedImage value passed directly to the TimelineItem', () => {
     props = {
       isLeft: isNotLeft,
       isOneWay: false,
-
     }
 
     component = mount(<Timeline {...props}>
-      {createTimelineItem(itemProps)}
+      {createTimelineItem({
+        ...itemProps,
+        isStackedImage: true
+      })}
     </Timeline>)
 
     const item = component.find(TimelineItem)
@@ -251,9 +255,9 @@ describe('Timeline', () => {
     }
 
     //For the arrow direction
-    expect(generatedProps.isStackedImage).toEqual(undefined)
+    expect(generatedProps.isStackedImage).toEqual(true)
   })
-  
+
 
   // Render / mount / integration tests begin here
 

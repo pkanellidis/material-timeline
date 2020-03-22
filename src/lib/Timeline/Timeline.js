@@ -27,17 +27,18 @@ const useStyles = makeStyles(theme => {
 })
 
 const generateNewProps = (props, direction) => {
-	let isStackedImage;
-	if (props.stackedImages !== null) {
-		isStackedImage = {
+	let newProps = {
+		isOneWay: props.isOneWay,
+		direction: direction,
+	}
+
+	if (props.stackedImages != null) {
+		newProps = {
+			...newProps,
 			isStackedImage: props.stackedImages
 		}
 	}
-	const newProps = {
-		isOneWay: props.isOneWay,
-		direction: direction,
-		...isStackedImage
-	}
+	
 	return newProps;
 }
 
