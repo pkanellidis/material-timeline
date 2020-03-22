@@ -132,13 +132,13 @@ const TimelineItem = props => {
 		props.cardHeaderChildren ? (
 			<Grid container direction='column'>
 				{props.titleChildren ? (
-					<Grid item xs={11} md={11}>
+					<Grid item xs={12} md={12}>
 						{props.titleChildren}
 					</Grid>
 				) : null}
 
 				{props.cardHeaderChildren ? (
-					<Grid item xs={11} md={11}>
+					<Grid item xs={12} md={12}>
 						<Grid container direction='row'>
 							{props.cardHeaderChildren}
 						</Grid>
