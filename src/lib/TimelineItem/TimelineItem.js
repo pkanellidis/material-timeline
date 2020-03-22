@@ -84,7 +84,8 @@ export const useStyles = makeStyles(theme => {
 			justifyContent: 'center'
 		},
 		cardMedia: {
-			height: props => props.cardMediaProps.height,
+			height: props => props.cardMediaProps && props.cardMediaProps.height
+			? props.cardMediaProps.height : '100px',
 			objectFit: "contain"
 		},
 		expand: {
