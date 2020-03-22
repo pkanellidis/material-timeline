@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount, configure } from 'enzyme';
+import { mount, configure } from 'enzyme';
 import Timeline from './Timeline';
 import TimelineItem from '../TimelineItem/TimelineItem'
 import { directions } from '../enums/enums'
@@ -211,6 +211,47 @@ describe('Timeline', () => {
 
     expect(container.firstChild.firstChild instanceof elementType).toEqual(true)
 
+  })
+
+  it('Should pass True to isStackedImage prop', () => {
+    props = {
+      isLeft: isNotLeft,
+      isOneWay: false,
+      stackedImages: true,
+
+    }
+
+    component = mount(<Timeline {...props}>
+      {createTimelineItem(itemProps)}
+    </Timeline>)
+
+    const item = component.find(TimelineItem)
+    const generatedProps = {
+      isStackedImage: item.prop('isStackedImage')
+    }
+
+    //For the arrow direction
+    expect(generatedProps.isStackedImage).toEqual(true)
+  })
+
+  it('Should pass False to isStackedImage prop', () => {
+    props = {
+      isLeft: isNotLeft,
+      isOneWay: false,
+
+    }
+
+    component = mount(<Timeline {...props}>
+      {createTimelineItem(itemProps)}
+    </Timeline>)
+
+    const item = component.find(TimelineItem)
+    const generatedProps = {
+      isStackedImage: item.prop('isStackedImage')
+    }
+
+    //For the arrow direction
+    expect(generatedProps.isStackedImage).toEqual(undefined)
   })
   
 

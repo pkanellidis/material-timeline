@@ -126,7 +126,6 @@ describe('TimelineItem', () => {
 
   })
 
-  //TODO: check if the tests above work with no input (default values)
-  // Render / mount / integration tests begin here
+  
 
 });

@@ -89,9 +89,11 @@ export const createTimelineItem = (key, item, index, isDesktop) => {
 
     const timelineItem = (
         <TimelineItem
-            titleChildren={(<Typography gutterBottom style={{
-                textAlign: 'center'
-            }} variant={isDesktop ? 'h6' : 'body2'}>{item.title}</Typography>)}
+            titleChildren={(
+                <Typography gutterBottom style={{
+                    textAlign: 'center'
+                }} variant={isDesktop ? 'h6' : 'body2'}>{item.title}</Typography>
+            )}
 
             yearBackgroundColor='#00acc1'
             yearColor='white'
