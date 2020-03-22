@@ -113,6 +113,5 @@ describe('TimelineItem', function () {
         container = _render9.container;
 
     expect(container.firstChild.children[0].classList.toString().includes('listDotRight')).toBe(true);
-  }); //TODO: check if the tests above work with no input (default values)
-  // Render / mount / integration tests begin here
+  });
 });

@@ -1,3 +1,4 @@
+import _objectSpread from "@babel/runtime/helpers/esm/objectSpread2";
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import { directions } from '../enums/enums';
@@ -28,6 +29,21 @@ var useStyles = makeStyles(function (theme) {
   };
 });
 
+var generateNewProps = function generateNewProps(props, direction) {
+  var newProps = {
+    isOneWay: props.isOneWay,
+    direction: direction
+  };
+
+  if (props.stackedImages != null) {
+    newProps = _objectSpread({}, newProps, {
+      isStackedImage: props.stackedImages
+    });
+  }
+
+  return newProps;
+};
+
 var Timeline = function Timeline(props) {
   var classes = useStyles(props);
   var processedItems = React.Children.map(props.children, function (item, index) {
@@ -42,11 +58,10 @@ var Timeline = function Timeline(props) {
         isLeft = index % 2 === 0;
       }
 
+      var newProps = generateNewProps(props, isLeft ? directions.RIGHT : directions.LEFT);
       processedItem = React.createElement("li", {
         className: isLeft ? [classes.leftDirection, classes.TimelineElement].join(' ') : [classes.rightDirection, classes.TimelineElement].join(' ')
-      }, React.cloneElement(item, {
-        direction: isLeft ? directions.RIGHT : directions.LEFT
-      }));
+      }, React.cloneElement(item, newProps));
     } else {
       var direction;
       var isInvalidValidValue = !props.side || props.side && props.side !== directions.LEFT && props.side !== directions.RIGHT;
@@ -57,12 +72,11 @@ var Timeline = function Timeline(props) {
         direction = props.side;
       }
 
+      var _newProps = generateNewProps(props, direction);
+
       processedItem = React.createElement("li", {
         className: direction === directions.LEFT ? [classes.leftDirection, classes.TimelineElement].join(' ') : [classes.rightDirection, classes.TimelineElement].join(' ')
-      }, React.cloneElement(item, {
-        isOneWay: props.isOneWay,
-        direction: direction
-      }));
+      }, React.cloneElement(item, _newProps));
     }
 
     return props.wrapItem ? props.wrapItem(processedItem, index) : processedItem;

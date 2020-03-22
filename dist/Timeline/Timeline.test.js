@@ -1,6 +1,6 @@
 import _objectSpread from "@babel/runtime/helpers/esm/objectSpread2";
 import React from 'react';
-import { shallow, mount, configure } from 'enzyme';
+import { mount, configure } from 'enzyme';
 import Timeline from './Timeline';
 import TimelineItem from '../TimelineItem/TimelineItem';
 import { directions } from '../enums/enums';
@@ -24,7 +24,7 @@ describe('Timeline', function () {
   };
 
   var createTimelineItem = function createTimelineItem(props) {
-    return React.createElement(TimelineItem, itemProps);
+    return React.createElement(TimelineItem, props);
   };
 
   beforeEach(function () {
@@ -45,19 +45,20 @@ describe('Timeline', function () {
       padTo: true,
       hasDivider: true
     };
-  }); // Shallow / unit tests begin here
-  //TODO: test if elements are on the correct side based on the isLeft
-
-  it('Should render on the left side based on isLeft', function () {
+  });
+  it('Should render on the left-to-right (Directions.RIGHT) side based on isLeft', function () {
     props = {
       isLeft: isLeft,
       isOneWay: false
     };
     component = mount(React.createElement(Timeline, props, createTimelineItem(itemProps)));
-    expect(component.containsMatchingElement(createTimelineItem(_objectSpread({}, props, {
-      direction: directions.LEFT,
-      isOneWay: props.isOneWay
-    })))).toEqual(true);
+    var item = component.find(TimelineItem);
+    var generatedProps = {
+      isOneWay: item.prop('isOneWay'),
+      direction: item.prop('direction')
+    };
+    console.log(generatedProps);
+    expect(generatedProps.isOneWay === props.isOneWay && generatedProps.direction === directions.RIGHT).toEqual(true);
   });
   it('Should render on the right side based on isLeft', function () {
     props = {
@@ -155,5 +156,34 @@ describe('Timeline', function () {
         container = _render4.container;
 
     expect(container.firstChild.firstChild instanceof elementType).toEqual(true);
+  });
+  it('Should pass True to isStackedImage prop', function () {
+    props = {
+      isLeft: isNotLeft,
+      isOneWay: false,
+      stackedImages: true
+    };
+    component = mount(React.createElement(Timeline, props, createTimelineItem(itemProps)));
+    var item = component.find(TimelineItem);
+    var generatedProps = {
+      isStackedImage: item.prop('isStackedImage')
+    }; //For the arrow direction
+
+    expect(generatedProps.isStackedImage).toEqual(true);
+  });
+  it('Should keep isStackedImage value passed directly to the TimelineItem', function () {
+    props = {
+      isLeft: isNotLeft,
+      isOneWay: false
+    };
+    component = mount(React.createElement(Timeline, props, createTimelineItem(_objectSpread({}, itemProps, {
+      isStackedImage: true
+    }))));
+    var item = component.find(TimelineItem);
+    var generatedProps = {
+      isStackedImage: item.prop('isStackedImage')
+    }; //For the arrow direction
+
+    expect(generatedProps.isStackedImage).toEqual(true);
   }); // Render / mount / integration tests begin here
 });

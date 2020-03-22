@@ -74,7 +74,7 @@ export var useStyles = makeStyles(function (theme) {
     timelineYearWrapper: {
       content: '" "',
       background: function background(props) {
-        return 'linear-gradient(' + props.yearBackgroundColor + ',' + props.yearBackgroundColor + ' ) no-repeat center/4px 100%';
+        return props.customLine ? props.customLine : 'linear-gradient(' + props.yearBackgroundColor + ',' + props.yearBackgroundColor + ' ) no-repeat center/4px 100%';
       },
       height: '100%',
       display: 'block'
@@ -97,7 +97,7 @@ export var useStyles = makeStyles(function (theme) {
     },
     cardMedia: {
       height: function height(props) {
-        return props.cardMediaProps.height;
+        return props.cardMediaProps && props.cardMediaProps.height ? props.cardMediaProps.height : '100px';
       },
       objectFit: "contain"
     },
@@ -171,13 +171,24 @@ var TimelineItem = function TimelineItem(props) {
     }, cardContent));
   }
 
-  var finalItem;
+  var dividerGrid = props.hasDivider ? React.createElement(Grid, {
+    item: true,
+    xs: 12,
+    md: 12
+  }, React.createElement("br", null), React.createElement(Divider, null)) : null;
+  var listDotDirection;
 
   if (!props.isOneWay) {
+    listDotDirection = props.direction === directions.LEFT ? classes.listDotLeft : classes.listDotRight;
+  }
+
+  var finalItem;
+
+  if (props.isStackedImage) {
     finalItem = React.createElement("div", {
-      className: classes.TimelineItem
+      className: props.isOneWay ? classes.TimelineItemFull : classes.TimelineItem
     }, React.createElement("div", {
-      className: props.direction === directions.LEFT ? classes.listDotLeft : classes.listDotRight
+      className: listDotDirection
     }, React.createElement(Paper, {
       className: classes.timelineYear
     }, props.iconContent), React.createElement("div", {
@@ -192,26 +203,24 @@ var TimelineItem = function TimelineItem(props) {
       justify: "space-evenly"
     }, React.createElement(Grid, {
       item: true,
-      xs: 3,
-      md: 3
+      xs: 12,
+      md: 12
     }, cardMedia), React.createElement(Grid, {
       className: classes.TimelineCardContent,
       item: true,
-      xs: 8,
-      md: 8
-    }, cardHeader), props.hasDivider ? React.createElement(Grid, {
-      item: true,
       xs: 12,
       md: 12
-    }, React.createElement("br", null), React.createElement(Divider, null)) : null, React.createElement(Grid, {
+    }, cardHeader), dividerGrid, React.createElement(Grid, {
       item: true,
       xs: 12,
       md: 12
     }, cardContent)))));
   } else {
     finalItem = React.createElement("div", {
-      className: classes.TimelineItemFull
-    }, React.createElement("div", null, React.createElement(Paper, {
+      className: props.isOneWay ? classes.TimelineItemFull : classes.TimelineItem
+    }, React.createElement("div", {
+      className: listDotDirection
+    }, React.createElement(Paper, {
       className: classes.timelineYear
     }, props.iconContent), React.createElement("div", {
       className: classes.timelineYearWrapper
@@ -225,18 +234,14 @@ var TimelineItem = function TimelineItem(props) {
       justify: "space-evenly"
     }, React.createElement(Grid, {
       item: true,
-      xs: 3,
+      xs: 4,
       md: 3
     }, cardMedia), React.createElement(Grid, {
       className: classes.TimelineCardContent,
       item: true,
-      xs: 8,
+      xs: 7,
       md: 8
-    }, cardHeader), props.hasDivider ? React.createElement(Grid, {
-      item: true,
-      xs: 12,
-      md: 12
-    }, React.createElement("br", null), React.createElement(Divider, null)) : null, React.createElement(Grid, {
+    }, cardHeader), dividerGrid, React.createElement(Grid, {
       item: true,
       xs: 12,
       md: 12
