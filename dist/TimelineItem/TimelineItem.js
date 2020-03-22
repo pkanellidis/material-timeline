@@ -147,12 +147,12 @@ var TimelineItem = function TimelineItem(props) {
     direction: "column"
   }, props.titleChildren ? React.createElement(Grid, {
     item: true,
-    xs: 11,
-    md: 11
+    xs: 12,
+    md: 12
   }, props.titleChildren) : null, props.cardHeaderChildren ? React.createElement(Grid, {
     item: true,
-    xs: 11,
-    md: 11
+    xs: 12,
+    md: 12
   }, React.createElement(Grid, {
     container: true,
     direction: "row"
