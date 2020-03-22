@@ -65,9 +65,7 @@ const Timeline = (props) => {
 					[classes.leftDirection, classes.TimelineElement].join(' ') :
 					[classes.rightDirection, classes.TimelineElement].join(' ')}>
 
-					{React.cloneElement(item, (oldProps) => {
-						return 
-					})}
+					{React.cloneElement(item, newProps)}
 				</li>
 
 			)
