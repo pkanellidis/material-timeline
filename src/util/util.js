@@ -89,7 +89,6 @@ export const createTimelineItem = (key, item, index, isDesktop) => {
 
     const timelineItem = (
         <TimelineItem
-            isStackedImage={true}
             titleChildren={(
                 <Typography gutterBottom style={{
                     textAlign: 'center'
