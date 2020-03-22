@@ -91,8 +91,8 @@ const Timeline = (props) => {
 
 const TimelinePropTypes = {
 	isOneWay: PropTypes.bool,
-	wrapItem: (item, index) => {},
-	isLeft: (item, index) => {}
+	wrapItem: (item, index) => { },
+	isLeft: (item, index) => { }
 };
 
 Timeline.propTypes = TimelinePropTypes;
