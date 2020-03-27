@@ -10,7 +10,6 @@ export const useStyles = makeStyles(theme => {
 			width: props => props.timelineItemWidth
 				? props.timelineItemWidth : '50%',
 			alignContent: 'center',
-			display: 'flex'
 		},
 		TimelineItemFull: {
 			width: props => props.timelineItemWidth
