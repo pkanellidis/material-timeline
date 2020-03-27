@@ -9,8 +9,7 @@ export var useStyles = makeStyles(function (theme) {
       width: function width(props) {
         return props.timelineItemWidth ? props.timelineItemWidth : '50%';
       },
-      alignContent: 'center',
-      display: 'flex'
+      alignContent: 'center'
     },
     TimelineItemFull: {
       width: function width(props) {
