@@ -5,7 +5,7 @@ A React Timeline component using Material-UI
 ![Component Demo Gif](demo.gif)
 
 ## Example on GIF
-To find out how to make the components look excactly like they look in the GIF above
+To find out how to make the components look exactly like they look in the GIF above
 go to the project's repository and clone it.
 You can run `npm install` and then `npm start` to see the component in action.
 You will find the implementation of this demo at __src/index.js__
