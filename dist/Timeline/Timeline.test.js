@@ -1,13 +1,29 @@
-import _objectSpread from "@babel/runtime/helpers/esm/objectSpread2";
-import React from 'react';
-import { mount, configure } from 'enzyme';
-import Timeline from './Timeline';
-import TimelineItem from '../TimelineItem/TimelineItem';
-import { directions } from '../enums/enums';
-import { render } from '@testing-library/react';
-import Adapter from 'enzyme-adapter-react-16';
-configure({
-  adapter: new Adapter()
+"use strict";
+
+var _react = _interopRequireDefault(require("react"));
+
+var _enzyme = require("enzyme");
+
+var _Timeline = _interopRequireDefault(require("./Timeline"));
+
+var _TimelineItem = _interopRequireDefault(require("../TimelineItem/TimelineItem"));
+
+var _enums = require("../enums/enums");
+
+var _react2 = require("@testing-library/react");
+
+var _enzymeAdapterReact = _interopRequireDefault(require("enzyme-adapter-react-16"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+(0, _enzyme.configure)({
+  adapter: new _enzymeAdapterReact.default()
 });
 describe('Timeline', function () {
   var props;
@@ -24,7 +40,8 @@ describe('Timeline', function () {
   };
 
   var createTimelineItem = function createTimelineItem(props) {
-    return React.createElement(TimelineItem, props);
+    return (/*#__PURE__*/_react.default.createElement(_TimelineItem.default, props)
+    );
   };
 
   beforeEach(function () {
@@ -32,12 +49,12 @@ describe('Timeline', function () {
       yearBackgroundColor: '#fafafa'
     };
     itemProps = {
-      titleChildren: React.createElement("div", null),
+      titleChildren: /*#__PURE__*/_react.default.createElement("div", null),
       yearBackgroundColor: '#fafafa',
       yearColor: 'white',
-      cardContentChildren: React.createElement("div", null),
-      cardHeaderChildren: React.createElement("div", null),
-      iconContent: React.createElement("div", null),
+      cardContentChildren: /*#__PURE__*/_react.default.createElement("div", null),
+      cardHeaderChildren: /*#__PURE__*/_react.default.createElement("div", null),
+      iconContent: /*#__PURE__*/_react.default.createElement("div", null),
       cardMediaProps: {
         src: ''
       },
@@ -51,28 +68,28 @@ describe('Timeline', function () {
       isLeft: isLeft,
       isOneWay: false
     };
-    component = mount(React.createElement(Timeline, props, createTimelineItem(itemProps)));
-    var item = component.find(TimelineItem);
+    component = (0, _enzyme.mount)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(itemProps)));
+    var item = component.find(_TimelineItem.default);
     var generatedProps = {
       isOneWay: item.prop('isOneWay'),
       direction: item.prop('direction')
     };
     console.log(generatedProps);
-    expect(generatedProps.isOneWay === props.isOneWay && generatedProps.direction === directions.RIGHT).toEqual(true);
+    expect(generatedProps.isOneWay === props.isOneWay && generatedProps.direction === _enums.directions.RIGHT).toEqual(true);
   });
   it('Should render on the right side based on isLeft', function () {
     props = {
       isLeft: isNotLeft,
       isOneWay: false
     };
-    component = mount(React.createElement(Timeline, props, createTimelineItem(itemProps)));
-    var item = component.find(TimelineItem);
+    component = (0, _enzyme.mount)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(itemProps)));
+    var item = component.find(_TimelineItem.default);
     var generatedProps = {
       direction: item.prop('direction'),
       isOneWay: item.prop('isOneWay')
     }; //For the arrow direction
 
-    expect(generatedProps.direction === directions.LEFT).toEqual(true);
+    expect(generatedProps.direction === _enums.directions.LEFT).toEqual(true);
   }); //TODO: test if <li> is rendered correctly with its classes
 
   it('Should render <li> element', function () {
@@ -82,7 +99,7 @@ describe('Timeline', function () {
     };
     elementType = HTMLLIElement;
 
-    var _render = render(React.createElement(Timeline, props, createTimelineItem(itemProps))),
+    var _render = (0, _react2.render)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(itemProps))),
         container = _render.container;
 
     expect(container.firstChild.firstChild instanceof elementType).toEqual(true);
@@ -93,7 +110,7 @@ describe('Timeline', function () {
       isOneWay: false
     };
 
-    var _render2 = render(React.createElement(Timeline, props, createTimelineItem(itemProps))),
+    var _render2 = (0, _react2.render)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(itemProps))),
         container = _render2.container;
 
     expect(container.firstChild.firstChild.classList.toString().includes('leftDirection')).toEqual(true);
@@ -104,7 +121,7 @@ describe('Timeline', function () {
       isOneWay: false
     };
 
-    var _render3 = render(React.createElement(Timeline, props, createTimelineItem(itemProps))),
+    var _render3 = (0, _react2.render)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(itemProps))),
         container = _render3.container;
 
     expect(container.firstChild.firstChild.classList.toString().includes('rightDirection')).toEqual(true);
@@ -113,46 +130,47 @@ describe('Timeline', function () {
   it('Should render on the Left side based on isOneWay and props.side', function () {
     props = {
       isOneWay: true,
-      side: directions.LEFT
+      side: _enums.directions.LEFT
     };
-    component = mount(React.createElement(Timeline, props, createTimelineItem(itemProps)));
-    var item = component.find(TimelineItem);
+    component = (0, _enzyme.mount)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(itemProps)));
+    var item = component.find(_TimelineItem.default);
     var generatedProps = {
       direction: item.prop('direction'),
       isOneWay: item.prop('isOneWay')
     };
-    expect(generatedProps.direction === directions.LEFT && generatedProps.isOneWay).toEqual(true);
+    expect(generatedProps.direction === _enums.directions.LEFT && generatedProps.isOneWay).toEqual(true);
   });
   it('Should render on the Right side based on isOneWay and props.side', function () {
     props = {
       isOneWay: true,
-      side: directions.RIGHT
+      side: _enums.directions.RIGHT
     };
-    component = mount(React.createElement(Timeline, props, createTimelineItem(itemProps)));
-    var item = component.find(TimelineItem);
+    component = (0, _enzyme.mount)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(itemProps)));
+    var item = component.find(_TimelineItem.default);
     var generatedProps = {
       direction: item.prop('direction'),
       isOneWay: item.prop('isOneWay')
     };
-    expect(generatedProps.direction === directions.RIGHT && generatedProps.isOneWay).toEqual(true);
+    expect(generatedProps.direction === _enums.directions.RIGHT && generatedProps.isOneWay).toEqual(true);
   }); //TODO: test if the <li> are correctly wrapped from the wrap by function
 
   it('Should render on the left side based on isOneWay and props.side', function () {
     elementType = HTMLDivElement;
 
     var wrapWith = function wrapWith(item, index) {
-      return React.createElement("div", {
-        className: "wrappingElement"
-      }, item);
+      return (/*#__PURE__*/_react.default.createElement("div", {
+          className: "wrappingElement"
+        }, item)
+      );
     };
 
     props = {
       isOneWay: true,
-      side: directions.LEFT,
+      side: _enums.directions.LEFT,
       wrapItem: wrapWith
     };
 
-    var _render4 = render(React.createElement(Timeline, props, createTimelineItem(itemProps))),
+    var _render4 = (0, _react2.render)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(itemProps))),
         container = _render4.container;
 
     expect(container.firstChild.firstChild instanceof elementType).toEqual(true);
@@ -163,8 +181,8 @@ describe('Timeline', function () {
       isOneWay: false,
       stackedImages: true
     };
-    component = mount(React.createElement(Timeline, props, createTimelineItem(itemProps)));
-    var item = component.find(TimelineItem);
+    component = (0, _enzyme.mount)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(itemProps)));
+    var item = component.find(_TimelineItem.default);
     var generatedProps = {
       isStackedImage: item.prop('isStackedImage')
     }; //For the arrow direction
@@ -176,10 +194,10 @@ describe('Timeline', function () {
       isLeft: isNotLeft,
       isOneWay: false
     };
-    component = mount(React.createElement(Timeline, props, createTimelineItem(_objectSpread({}, itemProps, {
+    component = (0, _enzyme.mount)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(_objectSpread({}, itemProps, {
       isStackedImage: true
     }))));
-    var item = component.find(TimelineItem);
+    var item = component.find(_TimelineItem.default);
     var generatedProps = {
       isStackedImage: item.prop('isStackedImage')
     }; //For the arrow direction

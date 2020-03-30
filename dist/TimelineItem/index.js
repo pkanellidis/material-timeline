@@ -1,2 +1,13 @@
-import TimelineItem from './TimelineItem';
-export default TimelineItem;
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _TimelineItem = _interopRequireDefault(require("./TimelineItem"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = _TimelineItem.default;
+exports.default = _default;

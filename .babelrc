@@ -1,1 +1,1 @@
-{ "presets": [["react-app", { "absoluteRuntime": false }]] }
+{ "presets": [ "@babel/preset-env", "@babel/preset-react"  ]}

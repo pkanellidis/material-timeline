@@ -1,9 +1,37 @@
-import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
-import React, { useState } from 'react';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Card, Grid, CardMedia, CardContent, Box, Paper, makeStyles, Divider, Collapse, CardActions, IconButton } from '@material-ui/core';
-import { directions } from '../enums/enums';
-export var useStyles = makeStyles(function (theme) {
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.useStyles = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _ExpandMore = _interopRequireDefault(require("@material-ui/icons/ExpandMore"));
+
+var _core = require("@material-ui/core");
+
+var _enums = require("../enums/enums");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var useStyles = (0, _core.makeStyles)(function (theme) {
   return {
     TimelineItem: {
       width: function width(props) {
@@ -124,9 +152,10 @@ export var useStyles = makeStyles(function (theme) {
     }
   };
 });
+exports.useStyles = useStyles;
 
 var TimelineItem = function TimelineItem(props) {
-  var _useState = useState(false),
+  var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       expanded = _useState2[0],
       setExpanded = _useState2[1];
@@ -136,111 +165,111 @@ var TimelineItem = function TimelineItem(props) {
   };
 
   var classes = useStyles(props);
-  var cardMedia = props.cardMediaProps ? React.createElement(CardMedia, {
+  var cardMedia = props.cardMediaProps ? /*#__PURE__*/_react.default.createElement(_core.CardMedia, {
     className: classes.cardMedia,
     component: "img",
     src: props.cardMediaProps.imgUrl
   }) : null;
-  var cardHeader = props.titleChildren || props.cardHeaderChildren ? React.createElement(Grid, {
+  var cardHeader = props.titleChildren || props.cardHeaderChildren ? /*#__PURE__*/_react.default.createElement(_core.Grid, {
     container: true,
     direction: "column"
-  }, props.titleChildren ? React.createElement(Grid, {
+  }, props.titleChildren ? /*#__PURE__*/_react.default.createElement(_core.Grid, {
     item: true,
     xs: 12,
     md: 12
-  }, props.titleChildren) : null, props.cardHeaderChildren ? React.createElement(Grid, {
+  }, props.titleChildren) : null, props.cardHeaderChildren ? /*#__PURE__*/_react.default.createElement(_core.Grid, {
     item: true,
     xs: 12,
     md: 12
-  }, React.createElement(Grid, {
+  }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
     container: true,
     direction: "row"
   }, props.cardHeaderChildren)) : null) : null;
-  var cardContent = props.cardContentChildren ? React.createElement(CardContent, null, props.cardContentChildren) : null;
+  var cardContent = props.cardContentChildren ? /*#__PURE__*/_react.default.createElement(_core.CardContent, null, props.cardContentChildren) : null;
 
   if (props.expandableCardContent && props.cardContentChildren) {
-    cardContent = React.createElement(React.Fragment, null, React.createElement(CardActions, null, React.createElement(IconButton, {
+    cardContent = /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_core.CardActions, null, /*#__PURE__*/_react.default.createElement(_core.IconButton, {
       className: expanded ? [classes.expand, classes.expandOpen].join(' ') : [classes.expand].join(' '),
       onClick: handleExpandClick,
       "aria-expanded": expanded,
       "aria-label": "show more"
-    }, React.createElement(ExpandMoreIcon, null))), React.createElement(Collapse, {
+    }, /*#__PURE__*/_react.default.createElement(_ExpandMore.default, null))), /*#__PURE__*/_react.default.createElement(_core.Collapse, {
       in: expanded,
       timeout: "auto"
     }, cardContent));
   }
 
-  var dividerGrid = props.hasDivider ? React.createElement(Grid, {
+  var dividerGrid = props.hasDivider ? /*#__PURE__*/_react.default.createElement(_core.Grid, {
     item: true,
     xs: 12,
     md: 12
-  }, React.createElement("br", null), React.createElement(Divider, null)) : null;
+  }, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_core.Divider, null)) : null;
   var listDotDirection;
 
   if (!props.isOneWay) {
-    listDotDirection = props.direction === directions.LEFT ? classes.listDotLeft : classes.listDotRight;
+    listDotDirection = props.direction === _enums.directions.LEFT ? classes.listDotLeft : classes.listDotRight;
   }
 
   var finalItem;
 
   if (props.isStackedImage) {
-    finalItem = React.createElement("div", {
+    finalItem = /*#__PURE__*/_react.default.createElement("div", {
       className: props.isOneWay ? classes.TimelineItemFull : classes.TimelineItem
-    }, React.createElement("div", {
+    }, /*#__PURE__*/_react.default.createElement("div", {
       className: listDotDirection
-    }, React.createElement(Paper, {
+    }, /*#__PURE__*/_react.default.createElement(_core.Paper, {
       className: classes.timelineYear
-    }, props.iconContent), React.createElement("div", {
+    }, props.iconContent), /*#__PURE__*/_react.default.createElement("div", {
       className: classes.timelineYearWrapper
-    })), React.createElement(Box, {
-      className: props.direction === directions.LEFT ? classes.ArrowLeft : classes.ArrowRight
-    }, React.createElement(Card, {
+    })), /*#__PURE__*/_react.default.createElement(_core.Box, {
+      className: props.direction === _enums.directions.LEFT ? classes.ArrowLeft : classes.ArrowRight
+    }, /*#__PURE__*/_react.default.createElement(_core.Card, {
       component: "div",
       className: classes.TimelineCard
-    }, React.createElement(Grid, {
+    }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       container: true,
       justify: "space-evenly"
-    }, React.createElement(Grid, {
+    }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       item: true,
       xs: 12,
       md: 12
-    }, cardMedia), React.createElement(Grid, {
+    }, cardMedia), /*#__PURE__*/_react.default.createElement(_core.Grid, {
       className: classes.TimelineCardContent,
       item: true,
       xs: 12,
       md: 12
-    }, cardHeader), dividerGrid, React.createElement(Grid, {
+    }, cardHeader), dividerGrid, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       item: true,
       xs: 12,
       md: 12
     }, cardContent)))));
   } else {
-    finalItem = React.createElement("div", {
+    finalItem = /*#__PURE__*/_react.default.createElement("div", {
       className: props.isOneWay ? classes.TimelineItemFull : classes.TimelineItem
-    }, React.createElement("div", {
+    }, /*#__PURE__*/_react.default.createElement("div", {
       className: listDotDirection
-    }, React.createElement(Paper, {
+    }, /*#__PURE__*/_react.default.createElement(_core.Paper, {
       className: classes.timelineYear
-    }, props.iconContent), React.createElement("div", {
+    }, props.iconContent), /*#__PURE__*/_react.default.createElement("div", {
       className: classes.timelineYearWrapper
-    })), React.createElement(Box, {
-      className: props.direction === directions.LEFT ? classes.ArrowLeft : classes.ArrowRight
-    }, React.createElement(Card, {
+    })), /*#__PURE__*/_react.default.createElement(_core.Box, {
+      className: props.direction === _enums.directions.LEFT ? classes.ArrowLeft : classes.ArrowRight
+    }, /*#__PURE__*/_react.default.createElement(_core.Card, {
       component: "div",
       className: classes.TimelineCard
-    }, React.createElement(Grid, {
+    }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       container: true,
       justify: "space-evenly"
-    }, React.createElement(Grid, {
+    }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       item: true,
       xs: 4,
       md: 3
-    }, cardMedia), React.createElement(Grid, {
+    }, cardMedia), /*#__PURE__*/_react.default.createElement(_core.Grid, {
       className: classes.TimelineCardContent,
       item: true,
       xs: 7,
       md: 8
-    }, cardHeader), dividerGrid, React.createElement(Grid, {
+    }, cardHeader), dividerGrid, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       item: true,
       xs: 12,
       md: 12
@@ -250,4 +279,23 @@ var TimelineItem = function TimelineItem(props) {
   return finalItem;
 };
 
-export default TimelineItem;
+var TimelineItemPropTypes = {
+  yearBackgroundColor: _propTypes.default.string,
+  yearColor: _propTypes.default.string,
+  iconContent: _propTypes.default.element,
+  cardHeaderChildren: _propTypes.default.node,
+  cardContentChildren: _propTypes.default.node,
+  cardMediaProps: _propTypes.default.shape({
+    imgUrl: _propTypes.default.string,
+    height: _propTypes.default.string
+  }),
+  expandableCardContent: _propTypes.default.bool,
+  titleChildren: _propTypes.default.node,
+  padTop: _propTypes.default.bool,
+  timelineItemWidth: _propTypes.default.string,
+  hasDivider: _propTypes.default.bool,
+  customLine: _propTypes.default.string
+};
+TimelineItem.propTypes = TimelineItemPropTypes;
+var _default = TimelineItem;
+exports.default = _default;

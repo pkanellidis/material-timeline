@@ -1,8 +1,27 @@
-import _objectSpread from "@babel/runtime/helpers/esm/objectSpread2";
-import React from 'react';
-import { makeStyles } from '@material-ui/core';
-import { directions } from '../enums/enums';
-var useStyles = makeStyles(function (theme) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _core = require("@material-ui/core");
+
+var _enums = require("../enums/enums");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var useStyles = (0, _core.makeStyles)(function (theme) {
   return {
     Timeline: {
       listStylePosition: 'inside',
@@ -46,7 +65,8 @@ var generateNewProps = function generateNewProps(props, direction) {
 
 var Timeline = function Timeline(props) {
   var classes = useStyles(props);
-  var processedItems = React.Children.map(props.children, function (item, index) {
+
+  var processedItems = _react.default.Children.map(props.children, function (item, index) {
     var processedItem;
 
     if (!props.isOneWay) {
@@ -58,32 +78,42 @@ var Timeline = function Timeline(props) {
         isLeft = index % 2 === 0;
       }
 
-      var newProps = generateNewProps(props, isLeft ? directions.RIGHT : directions.LEFT);
-      processedItem = React.createElement("li", {
+      var newProps = generateNewProps(props, isLeft ? _enums.directions.RIGHT : _enums.directions.LEFT);
+      processedItem = /*#__PURE__*/_react.default.createElement("li", {
         className: isLeft ? [classes.leftDirection, classes.TimelineElement].join(' ') : [classes.rightDirection, classes.TimelineElement].join(' ')
-      }, React.cloneElement(item, newProps));
+      }, _react.default.cloneElement(item, newProps));
     } else {
       var direction;
-      var isInvalidValidValue = !props.side || props.side && props.side !== directions.LEFT && props.side !== directions.RIGHT;
+      var isInvalidValidValue = !props.side || props.side && props.side !== _enums.directions.LEFT && props.side !== _enums.directions.RIGHT;
 
       if (isInvalidValidValue) {
-        direction = directions.LEFT;
+        direction = _enums.directions.LEFT;
       } else {
         direction = props.side;
       }
 
       var _newProps = generateNewProps(props, direction);
 
-      processedItem = React.createElement("li", {
-        className: direction === directions.LEFT ? [classes.leftDirection, classes.TimelineElement].join(' ') : [classes.rightDirection, classes.TimelineElement].join(' ')
-      }, React.cloneElement(item, _newProps));
+      processedItem = /*#__PURE__*/_react.default.createElement("li", {
+        className: direction === _enums.directions.LEFT ? [classes.leftDirection, classes.TimelineElement].join(' ') : [classes.rightDirection, classes.TimelineElement].join(' ')
+      }, _react.default.cloneElement(item, _newProps));
     }
 
     return props.wrapItem ? props.wrapItem(processedItem, index) : processedItem;
   });
-  return React.createElement("ul", {
-    className: classes.Timeline
-  }, processedItems);
+
+  return (/*#__PURE__*/_react.default.createElement("ul", {
+      className: classes.Timeline
+    }, processedItems)
+  );
 };
 
-export default Timeline;
+var TimelinePropTypes = {
+  isOneWay: _propTypes.default.bool,
+  wrapItem: function wrapItem(item, index) {},
+  isLeft: function isLeft(item, index) {},
+  stackedImages: _propTypes.default.bool
+};
+Timeline.propTypes = TimelinePropTypes;
+var _default = Timeline;
+exports.default = _default;
