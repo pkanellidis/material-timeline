@@ -1,6 +1,3 @@
-/**
-* @augments {Component<{	yearBackgroundColor:string,	yearColor:string,	iconContent:element,	cardHeaderChildren:node,	cardContentChildren:node,	cardMediaProps:shape(		{			imgUrl:string,			height:string		>}
-*/
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
