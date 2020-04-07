@@ -1,5 +1,3 @@
-import Timeline from './Timeline/Timeline';
-import TimelineItem from './TimelineItem/TimelineItem';
-import {directions} from './enums/enums'
-
-export {Timeline, TimelineItem, directions};
+export {default as Timeline} from './Timeline/Timeline';
+export {default as TimelineItem} from './TimelineItem/TimelineItem';
+export {directions} from './enums/enums'
