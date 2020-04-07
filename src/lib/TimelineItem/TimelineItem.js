@@ -1,3 +1,6 @@
+/**
+* @augments {Component<{	yearBackgroundColor:string,	yearColor:string,	iconContent:element,	cardHeaderChildren:node,	cardContentChildren:node,	cardMediaProps:shape(		{			imgUrl:string,			height:string		>}
+*/
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -251,8 +254,7 @@ const TimelineItem = props => {
 	return finalItem;
 };
 
-
-const TimelineItemPropTypes = {
+TimelineItem.propTypes = {
 	yearBackgroundColor: PropTypes.string,
 	yearColor: PropTypes.string,
 	iconContent: PropTypes.element,
@@ -271,7 +273,5 @@ const TimelineItemPropTypes = {
 	hasDivider: PropTypes.bool,
 	customLine: PropTypes.string
 };
-
-TimelineItem.propTypes = TimelineItemPropTypes;
 
 export default TimelineItem;

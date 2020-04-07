@@ -1,3 +1,6 @@
+/**
+* @augments {Component<{	isOneWay:boolean,	wrapItem: (item, index) => { >}
+*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core'
@@ -104,13 +107,11 @@ const Timeline = (props) => {
 
 }
 
-const TimelinePropTypes = {
+Timeline.propTypes = {
 	isOneWay: PropTypes.bool,
 	wrapItem: (item, index) => { },
 	isLeft: (item, index) => { },
 	stackedImages: PropTypes.bool
 };
-
-Timeline.propTypes = TimelinePropTypes;
 
 export default Timeline;
