@@ -108,12 +108,11 @@ var Timeline = function Timeline(props) {
   );
 };
 
-var TimelinePropTypes = {
+Timeline.propTypes = {
   isOneWay: _propTypes.default.bool,
   wrapItem: function wrapItem(item, index) {},
   isLeft: function isLeft(item, index) {},
   stackedImages: _propTypes.default.bool
 };
-Timeline.propTypes = TimelinePropTypes;
 var _default = Timeline;
 exports.default = _default;

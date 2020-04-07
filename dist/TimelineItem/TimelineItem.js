@@ -279,7 +279,7 @@ var TimelineItem = function TimelineItem(props) {
   return finalItem;
 };
 
-var TimelineItemPropTypes = {
+TimelineItem.propTypes = {
   yearBackgroundColor: _propTypes.default.string,
   yearColor: _propTypes.default.string,
   iconContent: _propTypes.default.element,
@@ -296,6 +296,5 @@ var TimelineItemPropTypes = {
   hasDivider: _propTypes.default.bool,
   customLine: _propTypes.default.string
 };
-TimelineItem.propTypes = TimelineItemPropTypes;
 var _default = TimelineItem;
 exports.default = _default;
