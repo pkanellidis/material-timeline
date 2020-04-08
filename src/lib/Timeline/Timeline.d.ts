@@ -1,12 +1,11 @@
-import PropTypes from 'prop-types';
 import * as React from 'react';
 
 
 export interface TimelineProps {
-    isOneWay?: PropTypes.bool,
+    isOneWay?: boolean,
 	wrapItem: (item, index) => { },
 	isLeft: (item, index) => { },
-	stackedImages?: PropTypes.bool
+	stackedImages?: boolean
 }
 
 declare const Timeline: React.ComponentType<TimelineProps>;
