@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 
-export interface TimelineItemProps {
+interface TimelineItemProps {
     yearBackgroundColor: string,
     yearColor: string,
     iconContent: PropTypes.ReactNodeLike,
