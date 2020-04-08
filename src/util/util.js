@@ -83,7 +83,7 @@ export const createTimelineItem = (key, item, index, isDesktop) => {
 
     const timelineItemContent = (
         <React.Fragment>
-            <Typography variant={isDesktop ? 'body1' : 'body2'}>{item.description}</Typography>
+            <Typography align='center' variant={isDesktop ? 'body1' : 'body2'}>{item.description}</Typography>
         </React.Fragment>
     )
 
