@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-import * as React from 'react';
-import { TimelineProps } from '../Timeline/Timeline';
 
 
 export interface TimelineItemProps {
@@ -22,4 +20,4 @@ export interface TimelineItemProps {
     customLine: string
 }
 
-export default function TimelineItem(props: TimelineProps): JSX.Element;
+export default function TimelineItem(props: TimelineItemProps): JSX.Element;
