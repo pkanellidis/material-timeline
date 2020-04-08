@@ -8,5 +8,4 @@ export interface TimelineProps {
 	stackedImages?: boolean
 }
 
-declare const Timeline: React.ComponentType<TimelineProps>;
-export default Timeline;
+export default function Timeline(props: TimelineProps): JSX.Element;
