@@ -3,23 +3,22 @@ import * as React from 'react';
 
 
 export interface TimelineItemProps {
-    yearBackgroundColor: PropTypes.string,
-    yearColor: PropTypes.string,
-    iconContent: PropTypes.element,
-    cardHeaderChildren: PropTypes.node,
-    cardContentChildren: PropTypes.node,
+    yearBackgroundColor: string,
+    yearColor: string,
+    iconContent: PropTypes.ReactNodeLike,
+    cardHeaderChildren: PropTypes.ReactNodeLike,
+    cardContentChildren: PropTypes.ReactNodeLike,
     cardMediaProps:
     {
-        imgUrl: PropTypes.string,
-        height: PropTypes.string
-    }
-    ,
-    expandableCardContent: PropTypes.bool,
-    titleChildren: PropTypes.node,
-    padTop: PropTypes.bool,
-    timelineItemWidth: PropTypes.string,
-    hasDivider: PropTypes.bool,
-    customLine: PropTypes.string
+        imgUrl: string,
+        height: string
+    },
+    expandableCardContent: boolean,
+    titleChildren: PropTypes.ReactNodeLike
+    padTop: boolean
+    timelineItemWidth: PropTypes.ReactNodeLike,
+    hasDivider: boolean,
+    customLine: string
 }
 
 declare const TimelineItem: React.ComponentType<TimelineItemProps>;
