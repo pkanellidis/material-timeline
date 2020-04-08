@@ -1,6 +1,6 @@
 {
   "name": "material-timeline",
-  "version": "0.9.54",
+  "version": "0.9.9",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
