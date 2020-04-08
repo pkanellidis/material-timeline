@@ -1,5 +1,5 @@
 
-export interface TimelineProps {
+interface TimelineProps {
     isOneWay?: boolean,
 	wrapItem: (item, index) => { },
 	isLeft: (item, index) => { },

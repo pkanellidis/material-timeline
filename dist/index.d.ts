@@ -4,3 +4,6 @@ export * from './Timeline';
 export { default as TimelineItem } from './TimelineItem';
 export * from './TimelineItem';
 
+export {directions} from './enums/enums'
+
+
