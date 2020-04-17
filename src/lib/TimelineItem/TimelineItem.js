@@ -67,7 +67,7 @@ export const useStyles = makeStyles(theme => {
 		timelineYearWrapper: {
 			content: '" "',
 			background: (props) => props.customLine ? props.customLine :
-			'linear-gradient(' + props.yearBackgroundColor + ',' + props.yearBackgroundColor + ' ) no-repeat center/4px 100%',
+				'linear-gradient(' + props.yearBackgroundColor + ',' + props.yearBackgroundColor + ' ) no-repeat center/4px 100%',
 			height: '100%',
 			display: 'block',
 		},
@@ -85,7 +85,7 @@ export const useStyles = makeStyles(theme => {
 		},
 		cardMedia: {
 			height: props => props.cardMediaProps && props.cardMediaProps.height
-			? props.cardMediaProps.height : '100px',
+				? props.cardMediaProps.height : '100px',
 			objectFit: "contain"
 		},
 		expand: {
@@ -182,14 +182,15 @@ const TimelineItem = props => {
 	let listDotDirection;
 	if (!props.isOneWay) {
 		listDotDirection = props.direction === directions.LEFT ?
-		classes.listDotLeft : classes.listDotRight
+			classes.listDotLeft : classes.listDotRight
 	}
 
 	let finalItem;
 
 	if (props.isStackedImage) {
 		finalItem = (
-			<div className={props.isOneWay ? classes.TimelineItemFull : classes.TimelineItem}>
+			<div className={props.isOneWay ? [classes.TimelineItemFull, props.className].join(' ')
+				: [classes.TimelineItem, props.className].join(' ')}>
 				<div className={listDotDirection}>
 					<Paper className={classes.timelineYear}>
 						{props.iconContent}
@@ -219,7 +220,8 @@ const TimelineItem = props => {
 	}
 	else {
 		finalItem = (
-			<div className={props.isOneWay ? classes.TimelineItemFull : classes.TimelineItem}>
+			<div {...props} className={props.isOneWay ? [classes.TimelineItemFull, props.className].join(' ')
+				: [classes.TimelineItem, props.className].join(' ')}>
 				<div className={listDotDirection}>
 					<Paper className={classes.timelineYear}>
 						{props.iconContent}

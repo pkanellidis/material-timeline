@@ -63,7 +63,7 @@ __NOTE__ the `item` argument is a reactElement, not just data.
 
 In order to avoid bad usage, possible styles that can break the Timeline's functionality, are removed from
 the `styles` property. 
-These are currently `direction, listStyleType, listStylePosition` 
+These are currently `listStyleType, listStylePosition` 
 
 
 ### TimelineItem

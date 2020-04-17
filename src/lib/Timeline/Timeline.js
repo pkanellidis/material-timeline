@@ -42,7 +42,6 @@ const generateNewProps = (props, direction) => {
 
 const processExternalStyles = (props) => {
 	if (props.style){
-		delete props.style.direction
 		delete props.style.listStylePosition
 		delete props.style.listStyleType
 	}
@@ -104,7 +103,7 @@ const Timeline = (props) => {
 	})
 
 	return (
-		<ul style={props.style} className={classes.Timeline}>
+		<ul {...props} className={[classes.Timeline, props.className].join(' ')}>
 			{processedItems}
 		</ul>
 	)
