@@ -57,7 +57,7 @@ export const createTimelineItem = (key, item, index, isDesktop) => {
 
     const timelineItemIcon = (
         <Typography variant={isDesktop ? 'h6' : 'body2'}>
-            {index % 2 === 0 ? item.date : ''}
+            {item.date}
         </Typography>
     )
 
@@ -95,7 +95,7 @@ export const createTimelineItem = (key, item, index, isDesktop) => {
                 }} variant={isDesktop ? 'h6' : 'body2'}>{item.title}</Typography>
             )}
 
-            yearBackgroundColor={ index % 2 !== 0 ? 'blue' :'cyan'}
+            yearBackgroundColor='#00acc1'
             yearColor='white'
             cardContentChildren={timelineItemContent}
             cardHeaderChildren={timelineItemHeader}
