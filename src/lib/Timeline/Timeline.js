@@ -8,8 +8,6 @@ const useStyles = makeStyles(theme => {
 		Timeline: {
 			listStylePosition: 'inside',
 			listStyleType: 'none',
-			marginLeft: 0,
-			paddingLeft: '1em',
 		},
 		TimelineElement: {
 			position: "relative", /* so that pseudoelements are positioned relatively to their "li"s*/
@@ -42,9 +40,18 @@ const generateNewProps = (props, direction) => {
 	return newProps;
 }
 
+const processExternalStyles = (props) => {
+	if (props.style){
+		delete props.style.direction
+		delete props.style.listStylePosition
+		delete props.style.listStyleType
+	}
+}
+
 const Timeline = (props) => {
 
 	const classes = useStyles(props);
+	processExternalStyles(props)
 
 	const processedItems = React.Children.map(props.children, (item, index) => {
 		let processedItem;
@@ -97,7 +104,7 @@ const Timeline = (props) => {
 	})
 
 	return (
-		<ul className={classes.Timeline}>
+		<ul style={props.style} className={classes.Timeline}>
 			{processedItems}
 		</ul>
 	)
@@ -108,7 +115,7 @@ Timeline.propTypes = {
 	isOneWay: PropTypes.bool,
 	wrapItem: (item, index) => { },
 	isLeft: (item, index) => { },
-	stackedImages: PropTypes.bool
+	stackedImages: PropTypes.bool,
 };
 
 export default Timeline;

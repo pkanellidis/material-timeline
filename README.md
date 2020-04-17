@@ -61,6 +61,10 @@ __NOTE__ the `item` argument is a reactElement, not just data.
 - __stackedImages: Boolean__
 > Specifies if the TimelineItems should have their image at the Left or at the Top.
 
+In order to avoid bad usage, possible styles that can break the Timeline's functionality, are removed from
+the `styles` property. 
+These are currently `direction, listStyleType, listStylePosition` 
+
 
 ### TimelineItem
 
