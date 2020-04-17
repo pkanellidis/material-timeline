@@ -15,6 +15,8 @@ var _enums = require("../enums/enums");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -63,7 +65,6 @@ var generateNewProps = function generateNewProps(props, direction) {
 
 var processExternalStyles = function processExternalStyles(props) {
   if (props.style) {
-    delete props.style.direction;
     delete props.style.listStylePosition;
     delete props.style.listStyleType;
   }
@@ -109,10 +110,9 @@ var Timeline = function Timeline(props) {
     return props.wrapItem ? props.wrapItem(processedItem, index) : processedItem;
   });
 
-  return (/*#__PURE__*/_react.default.createElement("ul", {
-      style: props.style,
-      className: classes.Timeline
-    }, processedItems)
+  return (/*#__PURE__*/_react.default.createElement("ul", _extends({}, props, {
+      className: [classes.Timeline, props.className].join(' ')
+    }), processedItems)
   );
 };
 
