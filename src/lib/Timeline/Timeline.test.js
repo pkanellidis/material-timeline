@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, configure } from 'enzyme';
+import { mount, configure, shallow } from 'enzyme';
 import Timeline from './Timeline';
 import TimelineItem from '../TimelineItem/TimelineItem'
 import { directions } from '../enums/enums'
@@ -69,9 +69,6 @@ describe('Timeline', () => {
       isOneWay: item.prop('isOneWay'),
       direction: item.prop('direction')
     }
-
-    console.log(generatedProps);
-    
 
     expect(generatedProps.isOneWay === props.isOneWay
       && generatedProps.direction === directions.RIGHT).toEqual(true)
@@ -258,7 +255,29 @@ describe('Timeline', () => {
     expect(generatedProps.isStackedImage).toEqual(true)
   })
 
+  it('should remove styles that can break the component', () => {
+    props = {
+      isLeft: isNotLeft,
+      isOneWay: false,
+      style: {
+        listStyleType: 'lao'
+      }
+    }
 
-  // Render / mount / integration tests begin here
+    component = mount(<Timeline {...props}>
+      {createTimelineItem({
+        ...itemProps,
+        isStackedImage: true
+      })}
+    </Timeline>)
+
+    const item = component.find(Timeline)
+    const generatedProps = {
+      style: item.prop('style')
+    }
+
+    //For the arrow direction
+    expect(generatedProps.style.listStyleType).toEqual(undefined)
+  })
 
 });

@@ -25,9 +25,7 @@ var useStyles = (0, _core.makeStyles)(function (theme) {
   return {
     Timeline: {
       listStylePosition: 'inside',
-      listStyleType: 'none',
-      marginLeft: 0,
-      paddingLeft: '1em'
+      listStyleType: 'none'
     },
     TimelineElement: {
       position: "relative",
@@ -63,8 +61,17 @@ var generateNewProps = function generateNewProps(props, direction) {
   return newProps;
 };
 
+var processExternalStyles = function processExternalStyles(props) {
+  if (props.style) {
+    delete props.style.direction;
+    delete props.style.listStylePosition;
+    delete props.style.listStyleType;
+  }
+};
+
 var Timeline = function Timeline(props) {
   var classes = useStyles(props);
+  processExternalStyles(props);
 
   var processedItems = _react.default.Children.map(props.children, function (item, index) {
     var processedItem;
@@ -103,6 +110,7 @@ var Timeline = function Timeline(props) {
   });
 
   return (/*#__PURE__*/_react.default.createElement("ul", {
+      style: props.style,
       className: classes.Timeline
     }, processedItems)
   );

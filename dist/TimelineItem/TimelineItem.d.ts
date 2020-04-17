@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { HTMLAttributes } from 'react';
 
 
-interface TimelineItemProps {
+interface TimelineItemProps extends HTMLAttributes<T>{
     yearBackgroundColor: string,
     yearColor: string,
     iconContent: PropTypes.ReactNodeLike,
