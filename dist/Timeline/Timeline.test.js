@@ -74,7 +74,6 @@ describe('Timeline', function () {
       isOneWay: item.prop('isOneWay'),
       direction: item.prop('direction')
     };
-    console.log(generatedProps);
     expect(generatedProps.isOneWay === props.isOneWay && generatedProps.direction === _enums.directions.RIGHT).toEqual(true);
   });
   it('Should render on the right side based on isLeft', function () {
@@ -203,5 +202,23 @@ describe('Timeline', function () {
     }; //For the arrow direction
 
     expect(generatedProps.isStackedImage).toEqual(true);
-  }); // Render / mount / integration tests begin here
+  });
+  it('should remove styles that can break the component', function () {
+    props = {
+      isLeft: isNotLeft,
+      isOneWay: false,
+      style: {
+        listStyleType: 'lao'
+      }
+    };
+    component = (0, _enzyme.mount)( /*#__PURE__*/_react.default.createElement(_Timeline.default, props, createTimelineItem(_objectSpread({}, itemProps, {
+      isStackedImage: true
+    }))));
+    var item = component.find(_Timeline.default);
+    var generatedProps = {
+      style: item.prop('style')
+    }; //For the arrow direction
+
+    expect(generatedProps.style.listStyleType).toEqual(undefined);
+  });
 });

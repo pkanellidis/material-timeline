@@ -1,5 +1,6 @@
+import { HTMLAttributes } from "react";
 
-interface TimelineProps {
+interface TimelineProps extends HTMLAttributes<T>{
     isOneWay?: boolean,
 	wrapItem: (item, index) => { },
 	isLeft: (item, index) => { },

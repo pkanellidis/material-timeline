@@ -23,6 +23,8 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -214,7 +216,7 @@ var TimelineItem = function TimelineItem(props) {
 
   if (props.isStackedImage) {
     finalItem = /*#__PURE__*/_react.default.createElement("div", {
-      className: props.isOneWay ? classes.TimelineItemFull : classes.TimelineItem
+      className: props.isOneWay ? [classes.TimelineItemFull, props.className].join(' ') : [classes.TimelineItem, props.className].join(' ')
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: listDotDirection
     }, /*#__PURE__*/_react.default.createElement(_core.Paper, {
@@ -244,9 +246,9 @@ var TimelineItem = function TimelineItem(props) {
       md: 12
     }, cardContent)))));
   } else {
-    finalItem = /*#__PURE__*/_react.default.createElement("div", {
-      className: props.isOneWay ? classes.TimelineItemFull : classes.TimelineItem
-    }, /*#__PURE__*/_react.default.createElement("div", {
+    finalItem = /*#__PURE__*/_react.default.createElement("div", _extends({}, props, {
+      className: props.isOneWay ? [classes.TimelineItemFull, props.className].join(' ') : [classes.TimelineItem, props.className].join(' ')
+    }), /*#__PURE__*/_react.default.createElement("div", {
       className: listDotDirection
     }, /*#__PURE__*/_react.default.createElement(_core.Paper, {
       className: classes.timelineYear
