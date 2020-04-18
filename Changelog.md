@@ -1,7 +1,8 @@
 # Changelog
 
+- __Version 1.0.3__
+    - Added maxWidth for middleItem
 - __Version 1.0.2__ 
-    - Fixed bug where large middleItem width would overlap card
     - Fixed HTML DOM prop warnings
     - Added HTML props forwarding on forgotten code snippet
 - __Version 1.0.1__
