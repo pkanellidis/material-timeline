@@ -2,11 +2,20 @@ import React, { useState } from 'react';
 import { render } from "react-dom";
 import { timelineItems as data, createTimelineItem } from './util/util'
 import Timeline from './lib/Timeline/Timeline';
-import { CircularProgress } from '@material-ui/core';
+import { CircularProgress, makeStyles } from '@material-ui/core';
 import { Spring, animated as a } from 'react-spring/renderprops';
 
+const useStyle = makeStyles(theme => {
+  return  {
+    BackRed: {
+      backgroundColor: 'blue',
+    }
+  }
+})
 
 const App = () => {
+
+  const classes = useStyle();
 
   const result = window.matchMedia('(min-width: 800px)');
   const [isDesktop, setIsDesktop] = useState(result.matches)
@@ -86,6 +95,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Timeline
+        className={classes.BackRed}
         stackedImages={!isDesktop}
         isLeft={isLeft}
         isOneWay={!isDesktop}

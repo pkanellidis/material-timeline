@@ -36,12 +36,12 @@ const generateNewProps = (props, direction) => {
 			isStackedImage: props.stackedImages
 		}
 	}
-	
+
 	return newProps;
 }
 
 const processExternalStyles = (props) => {
-	if (props.style){
+	if (props.style) {
 		delete props.style.listStylePosition
 		delete props.style.listStyleType
 	}
@@ -50,7 +50,15 @@ const processExternalStyles = (props) => {
 const Timeline = (props) => {
 
 	const classes = useStyles(props);
-	processExternalStyles(props)
+	processExternalStyles(props);
+
+	const {
+		isOneWay,
+		wrapItem,
+		isLeft,
+		stackedImages,
+		htmlProps
+	} = props;
 
 	const processedItems = React.Children.map(props.children, (item, index) => {
 		let processedItem;
@@ -88,7 +96,7 @@ const Timeline = (props) => {
 			else {
 				direction = props.side
 			}
-			
+
 			const newProps = generateNewProps(props, direction)
 
 			processedItem = (
@@ -103,7 +111,7 @@ const Timeline = (props) => {
 	})
 
 	return (
-		<ul {...props} className={[classes.Timeline, props.className].join(' ')}>
+		<ul {...htmlProps} className={[classes.Timeline, props.className].join(' ')}>
 			{processedItems}
 		</ul>
 	)

@@ -122,6 +122,20 @@ const TimelineItem = props => {
 
 	const classes = useStyles(props);
 
+	const {yearBackgroundColor,
+		yearColor,
+		iconContent,
+		cardHeaderChildren,
+		cardContentChildren,
+		cardMediaProps,
+		expandableCardContent,
+		titleChildren,
+		padTop,
+		timelineItemWidth,
+		hasDivider,
+		customLine,
+		htmlProps} = props
+
 	const cardMedia = props.cardMediaProps ? (
 		<CardMedia className={classes.cardMedia} component='img' src={props.cardMediaProps.imgUrl} />
 	) : null;
@@ -188,7 +202,7 @@ const TimelineItem = props => {
 
 	if (props.isStackedImage) {
 		finalItem = (
-			<div className={props.isOneWay ? [classes.TimelineItemFull, props.className].join(' ')
+			<div {...htmlProps} className={props.isOneWay ? [classes.TimelineItemFull, props.className].join(' ')
 				: [classes.TimelineItem, props.className].join(' ')}>
 				<div className={listDotDirection}>
 					<Paper className={classes.timelineYear}>
@@ -219,7 +233,7 @@ const TimelineItem = props => {
 	}
 	else {
 		finalItem = (
-			<div {...props} className={props.isOneWay ? [classes.TimelineItemFull, props.className].join(' ')
+			<div {...htmlProps} className={props.isOneWay ? [classes.TimelineItemFull, props.className].join(' ')
 				: [classes.TimelineItem, props.className].join(' ')}>
 				<div className={listDotDirection}>
 					<Paper className={classes.timelineYear}>
