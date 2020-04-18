@@ -101,13 +101,15 @@ export const useStyles = makeStyles(theme => {
 			position: 'absolute',
 			left: '50%',
 			transform: 'translate(-50%, 0)',
-			height: '100%'
+			height: '100%',
+			maxWidth: '11em'
 		},
 		listDotRight: {
 			position: 'absolute',
 			right: '50%',
 			transform: 'translate(50%, 0)',
-			height: '100%'
+			height: '100%',
+			maxWidth: '11em'
 		}
 	}
 })

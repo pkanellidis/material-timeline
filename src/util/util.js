@@ -57,7 +57,7 @@ export const createTimelineItem = (key, item, index, isDesktop) => {
 
     const timelineItemIcon = (
         <Typography variant={isDesktop ? 'h6' : 'body2'}>
-            {item.date}
+            {index * 10000000000000}
         </Typography>
     )
 

@@ -95,7 +95,6 @@ const App = () => {
   return (
     <React.Fragment>
       <Timeline
-        className={classes.BackRed}
         stackedImages={!isDesktop}
         isLeft={isLeft}
         isOneWay={!isDesktop}
