@@ -39,13 +39,12 @@ var useStyles = (0, _core.makeStyles)(function (theme) {
       width: function width(props) {
         return props.timelineItemWidth ? props.timelineItemWidth : '50%';
       },
-      alignContent: 'center'
+      alignItems: 'center'
     },
     TimelineItemFull: {
       width: function width(props) {
         return props.timelineItemWidth ? props.timelineItemWidth : '100%';
       },
-      alignSelf: 'flex-start',
       flexDirection: 'row',
       display: 'flex'
     },
@@ -63,7 +62,7 @@ var useStyles = (0, _core.makeStyles)(function (theme) {
       marginTop: theme.spacing(2),
       direction: 'ltr',
       marginLeft: function marginLeft(props) {
-        return !props.isOneWay ? '64px' : '0';
+        return !props.isOneWay ? '6em' : '0';
       },
       '&::before': {
         content: '" "',
@@ -85,7 +84,7 @@ var useStyles = (0, _core.makeStyles)(function (theme) {
       marginTop: theme.spacing(2),
       direction: 'ltr',
       marginRight: function marginRight(props) {
-        return !props.isOneWay ? '64px' : '0';
+        return !props.isOneWay ? '6em' : '0';
       },
       '&::before': {
         content: '" "',
@@ -167,6 +166,19 @@ var TimelineItem = function TimelineItem(props) {
   };
 
   var classes = useStyles(props);
+  var yearBackgroundColor = props.yearBackgroundColor,
+      yearColor = props.yearColor,
+      iconContent = props.iconContent,
+      cardHeaderChildren = props.cardHeaderChildren,
+      cardContentChildren = props.cardContentChildren,
+      cardMediaProps = props.cardMediaProps,
+      expandableCardContent = props.expandableCardContent,
+      titleChildren = props.titleChildren,
+      padTop = props.padTop,
+      timelineItemWidth = props.timelineItemWidth,
+      hasDivider = props.hasDivider,
+      customLine = props.customLine,
+      htmlProps = props.htmlProps;
   var cardMedia = props.cardMediaProps ? /*#__PURE__*/_react.default.createElement(_core.CardMedia, {
     className: classes.cardMedia,
     component: "img",
@@ -215,9 +227,9 @@ var TimelineItem = function TimelineItem(props) {
   var finalItem;
 
   if (props.isStackedImage) {
-    finalItem = /*#__PURE__*/_react.default.createElement("div", {
+    finalItem = /*#__PURE__*/_react.default.createElement("div", _extends({}, htmlProps, {
       className: props.isOneWay ? [classes.TimelineItemFull, props.className].join(' ') : [classes.TimelineItem, props.className].join(' ')
-    }, /*#__PURE__*/_react.default.createElement("div", {
+    }), /*#__PURE__*/_react.default.createElement("div", {
       className: listDotDirection
     }, /*#__PURE__*/_react.default.createElement(_core.Paper, {
       className: classes.timelineYear
@@ -246,7 +258,7 @@ var TimelineItem = function TimelineItem(props) {
       md: 12
     }, cardContent)))));
   } else {
-    finalItem = /*#__PURE__*/_react.default.createElement("div", _extends({}, props, {
+    finalItem = /*#__PURE__*/_react.default.createElement("div", _extends({}, htmlProps, {
       className: props.isOneWay ? [classes.TimelineItemFull, props.className].join(' ') : [classes.TimelineItem, props.className].join(' ')
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: listDotDirection

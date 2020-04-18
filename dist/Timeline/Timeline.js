@@ -73,22 +73,27 @@ var processExternalStyles = function processExternalStyles(props) {
 var Timeline = function Timeline(props) {
   var classes = useStyles(props);
   processExternalStyles(props);
+  var isOneWay = props.isOneWay,
+      wrapItem = props.wrapItem,
+      isLeft = props.isLeft,
+      stackedImages = props.stackedImages,
+      htmlProps = props.htmlProps;
 
   var processedItems = _react.default.Children.map(props.children, function (item, index) {
     var processedItem;
 
     if (!props.isOneWay) {
-      var isLeft;
+      var _isLeft;
 
       if (props.isLeft) {
-        isLeft = props.isLeft(item, index);
+        _isLeft = props.isLeft(item, index);
       } else {
-        isLeft = index % 2 === 0;
+        _isLeft = index % 2 === 0;
       }
 
-      var newProps = generateNewProps(props, isLeft ? _enums.directions.RIGHT : _enums.directions.LEFT);
+      var newProps = generateNewProps(props, _isLeft ? _enums.directions.RIGHT : _enums.directions.LEFT);
       processedItem = /*#__PURE__*/_react.default.createElement("li", {
-        className: isLeft ? [classes.leftDirection, classes.TimelineElement].join(' ') : [classes.rightDirection, classes.TimelineElement].join(' ')
+        className: _isLeft ? [classes.leftDirection, classes.TimelineElement].join(' ') : [classes.rightDirection, classes.TimelineElement].join(' ')
       }, _react.default.cloneElement(item, newProps));
     } else {
       var direction;
@@ -110,7 +115,7 @@ var Timeline = function Timeline(props) {
     return props.wrapItem ? props.wrapItem(processedItem, index) : processedItem;
   });
 
-  return (/*#__PURE__*/_react.default.createElement("ul", _extends({}, props, {
+  return (/*#__PURE__*/_react.default.createElement("ul", _extends({}, htmlProps, {
       className: [classes.Timeline, props.className].join(' ')
     }), processedItems)
   );
