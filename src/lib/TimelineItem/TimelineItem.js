@@ -9,12 +9,11 @@ export const useStyles = makeStyles(theme => {
 		TimelineItem: {
 			width: props => props.timelineItemWidth
 				? props.timelineItemWidth : '50%',
-			alignContent: 'center',
+			alignItems: 'center',
 		},
 		TimelineItemFull: {
 			width: props => props.timelineItemWidth
 				? props.timelineItemWidth : '100%',
-			alignSelf: 'flex-start',
 			flexDirection: 'row',
 			display: 'flex',
 		},
@@ -29,7 +28,7 @@ export const useStyles = makeStyles(theme => {
 			flexDirection: 'row',
 			marginTop: theme.spacing(2),
 			direction: 'ltr',
-			marginLeft: (props) => !props.isOneWay ? '64px' : '0',
+			marginLeft: (props) => !props.isOneWay ? '6em' : '0',
 			'&::before': {
 				content: '" "',
 				width: 0,
@@ -49,7 +48,7 @@ export const useStyles = makeStyles(theme => {
 			flexDirection: 'row-reverse',
 			marginTop: theme.spacing(2),
 			direction: 'ltr',
-			marginRight: (props) => !props.isOneWay ? '64px' : '0',
+			marginRight: (props) => !props.isOneWay ? '6em' : '0',
 			'&::before': {
 				content: '" "',
 				width: 0,

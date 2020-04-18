@@ -1,5 +1,7 @@
 # Changelog
 
+- __Version 1.0.2__ 
+    - Fixed bug where large middleItem width would overlap card
 - __Version 1.0.1__
     - Added support for default HTML attributes
 - __Version 1.0.0:__
