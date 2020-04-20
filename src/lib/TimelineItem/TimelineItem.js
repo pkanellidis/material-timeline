@@ -200,7 +200,7 @@ const TimelineItem = props => {
 					</div>
 				</div>
 				<Box className={props.direction === directions.LEFT ? classes.ArrowLeft : classes.ArrowRight}>
-					<Card component='div' className={classes.TimelineCard}>
+					<Card elevation={props.elevation} component='div' className={classes.TimelineCard}>
 						<Grid container justify='space-evenly'>
 							<Grid item xs={12} md={12}>
 								{cardMedia}
@@ -231,7 +231,7 @@ const TimelineItem = props => {
 					</div>
 				</div>
 				<Box className={props.direction === directions.LEFT ? classes.ArrowLeft : classes.ArrowRight}>
-					<Card component='div' className={classes.TimelineCard}>
+					<Card elevation={props.elevation} component='div' className={classes.TimelineCard}>
 						<Grid container justify='space-evenly'>
 							<Grid item xs={4} md={3}>
 								{cardMedia}
@@ -254,6 +254,7 @@ const TimelineItem = props => {
 };
 
 TimelineItem.propTypes = {
+	elevation: PropTypes.number,
 	yearBackgroundColor: PropTypes.string,
 	yearColor: PropTypes.string,
 	iconContent: PropTypes.element,
