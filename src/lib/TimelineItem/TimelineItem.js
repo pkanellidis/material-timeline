@@ -124,7 +124,7 @@ const TimelineItem = props => {
 
 	const classes = useStyles(props);
 
-	const {yearBackgroundColor,
+	const { yearBackgroundColor,
 		yearColor,
 		iconContent,
 		cardHeaderChildren,
@@ -136,7 +136,7 @@ const TimelineItem = props => {
 		timelineItemWidth,
 		hasDivider,
 		customLine,
-		htmlProps} = props
+		htmlProps } = props
 
 	const cardMedia = props.cardMediaProps ? (
 		<CardMedia className={classes.cardMedia} component='img' src={props.cardMediaProps.imgUrl} />
@@ -217,9 +217,11 @@ const TimelineItem = props => {
 				<Box className={props.direction === directions.LEFT ? classes.ArrowLeft : classes.ArrowRight}>
 					<Card component='div' className={classes.TimelineCard}>
 						<Grid container justify='space-evenly'>
+						{cardMedia ? (
 							<Grid item xs={12} md={12}>
 								{cardMedia}
 							</Grid>
+							) : null}
 							<Grid className={classes.TimelineCardContent} item xs={12} md={12}>
 								{cardHeader}
 							</Grid>
@@ -248,9 +250,11 @@ const TimelineItem = props => {
 				<Box className={props.direction === directions.LEFT ? classes.ArrowLeft : classes.ArrowRight}>
 					<Card component='div' className={classes.TimelineCard}>
 						<Grid container justify='space-evenly'>
+							{cardMedia ? (
 							<Grid item xs={4} md={3}>
 								{cardMedia}
 							</Grid>
+							) : null}
 							<Grid className={classes.TimelineCardContent} item xs={7} md={8}>
 								{cardHeader}
 							</Grid>
