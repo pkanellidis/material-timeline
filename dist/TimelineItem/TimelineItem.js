@@ -245,11 +245,11 @@ var TimelineItem = function TimelineItem(props) {
     }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       container: true,
       justify: "space-evenly"
-    }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
+    }, cardMedia ? /*#__PURE__*/_react.default.createElement(_core.Grid, {
       item: true,
       xs: 12,
       md: 12
-    }, cardMedia), /*#__PURE__*/_react.default.createElement(_core.Grid, {
+    }, cardMedia) : null, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       className: classes.TimelineCardContent,
       item: true,
       xs: 12,
@@ -276,11 +276,11 @@ var TimelineItem = function TimelineItem(props) {
     }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       container: true,
       justify: "space-evenly"
-    }, /*#__PURE__*/_react.default.createElement(_core.Grid, {
+    }, cardMedia ? /*#__PURE__*/_react.default.createElement(_core.Grid, {
       item: true,
       xs: 4,
       md: 3
-    }, cardMedia), /*#__PURE__*/_react.default.createElement(_core.Grid, {
+    }, cardMedia) : null, /*#__PURE__*/_react.default.createElement(_core.Grid, {
       className: classes.TimelineCardContent,
       item: true,
       xs: 7,
