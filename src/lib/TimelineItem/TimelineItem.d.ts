@@ -3,6 +3,7 @@ import { HTMLAttributes } from 'react';
 
 
 interface TimelineItemProps extends HTMLAttributes<T>{
+    elevation: number,
     yearBackgroundColor: string,
     yearColor: string,
     iconContent: PropTypes.ReactNodeLike,
