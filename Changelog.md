@@ -1,5 +1,7 @@
 # Changelog
 
+- __Version 1.0.4__
+    - Fixed bug where cardMedia grid would render without cardMedia content being provided
 - __Version 1.0.3__
     - Added maxWidth for middleItem
 - __Version 1.0.2__ 
